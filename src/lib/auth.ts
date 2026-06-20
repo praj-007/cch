@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-const DEMO_USER_EMAIL = "arjun.patel@iimdelhi.ac.in";
+const DEMO_USER_EMAIL = "arjun.patel@fms.edu";
 
 export async function getCurrentUser() {
   return prisma.user.findUnique({

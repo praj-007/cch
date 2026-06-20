@@ -160,6 +160,22 @@ body {
   box-shadow: 2px 2px 0 #333, 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
+.sketch-tag-on-dark {
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.logo-mark {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: var(--elevation-2);
+}
+
 /* ── Inputs ── */
 .sketch-input {
   border: none;

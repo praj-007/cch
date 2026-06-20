@@ -12,7 +12,7 @@ import type {
 export const currentUser: User = {
   id: "u1",
   name: "Arjun Patel",
-  college: "IIM Delhi",
+  college: "FMS Delhi",
   program: "MBA (2nd Year)",
   points: 2840,
   streak: 12,
@@ -572,18 +572,18 @@ export const cases: CaseStudy[] = [
 
 export const availableMembers: TeamMember[] = [
   { id: "m1", name: "Priya Nair", college: "FMS Delhi", role: "Analyst", status: "available" },
-  { id: "m2", name: "Rohan Gupta", college: "IIM Delhi", role: "Presenter", status: "available" },
+  { id: "m2", name: "Rohan Gupta", college: "MDI Gurgaon", role: "Presenter", status: "available" },
   { id: "m3", name: "Sneha Reddy", college: "XLRI Jamshedpur", role: "Researcher", status: "available" },
   { id: "m4", name: "Vikram Singh", college: "MDI Gurgaon", role: "Lead", status: "available" },
   { id: "m5", name: "Ananya Joshi", college: "IIFT Delhi", role: "Analyst", status: "in-team" },
-  { id: "m6", name: "Karthik Menon", college: "IIM Delhi", role: "Researcher", status: "available" },
+  { id: "m6", name: "Karthik Menon", college: "IIFT Delhi", role: "Researcher", status: "available" },
 ];
 
 export const openTeams: Team[] = [
   {
     id: "t1",
     name: "Case Crushers",
-    college: "IIM Delhi",
+    college: "FMS Delhi",
     members: 3,
     maxMembers: 4,
     lookingFor: ["Presenter"],
@@ -639,7 +639,7 @@ export const forumPosts: ForumPost[] = [
   {
     id: "p3",
     author: "Arjun Patel",
-    college: "IIM Delhi",
+    college: "FMS Delhi",
     title: "Best resources for Porter's Five Forces practice?",
     content:
       "Looking for good examples of Porter's Five Forces applied to Indian companies. Any recommendations?",
@@ -652,7 +652,7 @@ export const forumPosts: ForumPost[] = [
   {
     id: "p4",
     author: "Dr. Priya Sharma",
-    college: "IIM Delhi",
+    college: "FMS Delhi",
     title: "Professor's Tip: Always start with the problem, not the framework",
     content:
       "Students often jump to frameworks before understanding the core problem. Spend first 15 minutes just understanding what the client really needs.",
@@ -679,12 +679,12 @@ export const forumPosts: ForumPost[] = [
 
 export const collegeLeaderboard: LeaderboardEntry[] = [
   { rank: 1, name: "Priya Nair", college: "FMS Delhi", points: 4200, casesCompleted: 28, streak: 21, badges: 5 },
-  { rank: 2, name: "Rohan Gupta", college: "IIM Delhi", points: 3850, casesCompleted: 25, streak: 15, badges: 4 },
+  { rank: 2, name: "Rohan Gupta", college: "MDI Gurgaon", points: 3850, casesCompleted: 25, streak: 15, badges: 4 },
   { rank: 3, name: "Sneha Reddy", college: "XLRI Jamshedpur", points: 3620, casesCompleted: 22, streak: 18, badges: 4 },
-  { rank: 4, name: "Karthik Menon", college: "IIM Delhi", points: 3100, casesCompleted: 20, streak: 10, badges: 3 },
+  { rank: 4, name: "Karthik Menon", college: "IIFT Delhi", points: 3100, casesCompleted: 20, streak: 10, badges: 3 },
   { rank: 5, name: "Ananya Joshi", college: "IIFT Delhi", points: 2950, casesCompleted: 19, streak: 8, badges: 3 },
   { rank: 6, name: "Vikram Singh", college: "MDI Gurgaon", points: 2900, casesCompleted: 18, streak: 14, badges: 3 },
-  { rank: 7, name: "Arjun Patel", college: "IIM Delhi", points: 2840, casesCompleted: 18, streak: 12, badges: 3 },
+  { rank: 7, name: "Arjun Patel", college: "FMS Delhi", points: 2840, casesCompleted: 18, streak: 12, badges: 3 },
   { rank: 8, name: "Meera Krishnan", college: "FMS Delhi", points: 2650, casesCompleted: 16, streak: 6, badges: 2 },
 ];
 
@@ -695,7 +695,7 @@ export const nationalLeaderboard: LeaderboardEntry[] = [
   { rank: 4, name: "Rohan Gupta", college: "IIM Delhi", points: 3850, casesCompleted: 25, streak: 15, badges: 4 },
   { rank: 5, name: "Sneha Reddy", college: "XLRI Jamshedpur", points: 3620, casesCompleted: 22, streak: 18, badges: 4 },
   { rank: 6, name: "Karthik Menon", college: "IIM Delhi", points: 3100, casesCompleted: 20, streak: 10, badges: 3 },
-  { rank: 7, name: "Arjun Patel", college: "IIM Delhi", points: 2840, casesCompleted: 18, streak: 12, badges: 3 },
+  { rank: 7, name: "Arjun Patel", college: "FMS Delhi", points: 2840, casesCompleted: 18, streak: 12, badges: 3 },
 ];
 
 export const selfAssessmentRubric: RubricItem[] = [

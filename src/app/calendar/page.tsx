@@ -83,7 +83,7 @@ export default function CalendarPage() {
           <span className="sketch-tag px-3 py-1.5 text-sm font-bold text-black">
             {openCount} open now
           </span>
-          <span className="sketch-tag border-white bg-transparent px-3 py-1.5 text-sm text-white">
+          <span className="sketch-tag-on-dark px-3 py-1.5 text-sm font-bold">
             {competitions.length} total comps
           </span>
         </div>

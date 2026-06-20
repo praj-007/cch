@@ -151,14 +151,18 @@ export default async function CompetitionDetailPage({
 
       <div className="flex flex-wrap gap-3">
         <RegisterButton slug={slug} initialRegistered={!!isRegistered} />
-        {competition.registrationUrl && (
+        {competition.registrationUrl &&
+          competition.status !== "COMPLETED" &&
+          competition.status !== "CLOSED" && (
           <a
             href={competition.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="sketch-btn inline-flex items-center gap-2 px-5 py-2.5 font-bold"
+            className="sketch-btn sketch-btn-filled inline-flex items-center gap-2 px-5 py-2.5 font-bold"
           >
-            official site
+            {competition.status === "REGISTRATION_OPEN"
+              ? "register now"
+              : "official page"}
             <ExternalLink className="h-4 w-4" />
           </a>
         )}

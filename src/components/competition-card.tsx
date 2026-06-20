@@ -122,14 +122,17 @@ export function CompetitionCard({
           details →
         </Link>
         {competition.registrationUrl &&
-          competition.status === "REGISTRATION_OPEN" && (
+          competition.status !== "COMPLETED" &&
+          competition.status !== "CLOSED" && (
             <a
               href={competition.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="sketch-btn inline-flex items-center gap-1 px-4 py-2 text-sm font-bold"
+              className="sketch-btn sketch-btn-filled inline-flex items-center gap-1 px-4 py-2 text-sm font-bold"
             >
-              official site
+              {competition.status === "REGISTRATION_OPEN"
+                ? "register now"
+                : "official page"}
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
           )}

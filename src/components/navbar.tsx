@@ -29,14 +29,16 @@ export function Navbar({
     <header className="nav-elevated sticky top-0 z-50 border-b-[3px] border-black">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="sketch-box flex h-10 w-10 items-center justify-center bg-black font-sketch text-lg font-bold text-white transition-transform group-hover:-rotate-3">
+          <div className="logo-mark flex h-10 w-10 items-center justify-center font-sketch text-lg font-bold transition-transform group-hover:-rotate-3">
             C
           </div>
           <div className="hidden sm:block">
-            <span className="font-sketch text-2xl font-bold leading-none">
+            <span className="font-sketch text-2xl font-bold leading-none text-ink">
               CaseCompHub
             </span>
-            <span className="block text-xs text-muted">casecomphub.com</span>
+            <span className="block text-xs font-bold text-muted">
+              casecomphub.com
+            </span>
           </div>
         </Link>
 
