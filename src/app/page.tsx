@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { HomeCalendarHero } from "@/components/home-calendar-hero";
 import { SketchBox } from "@/components/sketch-box";
-import { getCurrentUser } from "@/lib/auth";
 import { listCases } from "@/lib/services/cases";
 import { listCompetitions } from "@/lib/services/competitions";
 
 export default async function HomePage() {
-  const [user, allCases, competitions] = await Promise.all([
-    getCurrentUser(),
+  const [allCases, competitions] = await Promise.all([
     listCases(),
     listCompetitions(),
   ]);
@@ -65,12 +63,6 @@ export default async function HomePage() {
               find teammates
             </Link>
           </div>
-          {user && (
-            <p className="mt-4 text-sm text-muted">
-              Welcome back, {user.name.split(" ")[0]} — {user.points.toLocaleString()}{" "}
-              pts · {user.streak}-day streak
-            </p>
-          )}
         </SketchBox>
       </section>
     </div>

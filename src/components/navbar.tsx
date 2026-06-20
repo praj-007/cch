@@ -15,13 +15,7 @@ const navItems = [
   { href: "/profile", label: "Profile" },
 ];
 
-export function Navbar({
-  streak,
-  points,
-}: {
-  streak: number;
-  points: number;
-}) {
+export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -61,15 +55,6 @@ export function Navbar({
             );
           })}
         </nav>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <span className="sketch-tag px-3 py-1 text-sm font-bold">
-            🔥 {streak}
-          </span>
-          <span className="sketch-tag sketch-tag-active px-3 py-1 text-sm font-bold">
-            {points.toLocaleString()} pts
-          </span>
-        </div>
 
         <button
           type="button"
