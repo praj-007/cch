@@ -1,26 +1,293 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e8e5df;
+  --foreground: #0a0a0a;
+  --surface-card: #ffffff;
+  --surface-raised: #f6f4f0;
+  --surface-muted: #eceae4;
+  --surface-inset: #ddd9d2;
+  --surface-tag: #efede8;
+  --muted: #4a4a4a;
+  --border: #0a0a0a;
+  --ink: #0a0a0a;
+
+  /* Layered depth: soft diffuse + hard sketch offset */
+  --shadow-sketch-sm: 2px 2px 0 #0a0a0a;
+  --shadow-soft-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+  --shadow-soft-md: 0 6px 20px rgba(0, 0, 0, 0.1);
+  --shadow-soft-lg: 0 12px 36px rgba(0, 0, 0, 0.12);
+  --shadow-soft-xl: 0 20px 50px rgba(0, 0, 0, 0.14);
+
+  --elevation-1: var(--shadow-sketch-sm), var(--shadow-soft-sm);
+  --elevation-2: 3px 3px 0 #0a0a0a, var(--shadow-soft-md), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --elevation-3: 5px 5px 0 #0a0a0a, var(--shadow-soft-lg), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --elevation-4: 7px 7px 0 #0a0a0a, var(--shadow-soft-xl), 0 4px 8px rgba(0, 0, 0, 0.08);
+  --elevation-nav: 0 4px 24px rgba(0, 0, 0, 0.14), 0 1px 0 #0a0a0a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface: var(--surface-card);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --font-hand: var(--font-patrick-hand);
+  --font-sketch: var(--font-caveat);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-hand), "Comic Sans MS", cursive, sans-serif;
+}
+
+/* Notebook page — warm gray so white cards float */
+.paper-bg {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    radial-gradient(ellipse at 20% 0%, rgba(255, 255, 255, 0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+  background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
+}
+
+.font-hand {
+  font-family: var(--font-hand), cursive, sans-serif;
+}
+
+.font-sketch {
+  font-family: var(--font-sketch), cursive, sans-serif;
+}
+
+/* ── Surfaces ── */
+.surface-card {
+  background: var(--surface-card);
+}
+
+.surface-raised {
+  background: var(--surface-raised);
+}
+
+.surface-muted {
+  background: var(--surface-muted);
+}
+
+.surface-tag {
+  background: var(--surface-tag);
+}
+
+.surface-inset {
+  background: var(--surface-inset);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Boxes ── */
+.sketch-box {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: var(--surface-card);
+  box-shadow: var(--elevation-2);
+}
+
+.sketch-box-dark {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  background: #0a0a0a;
+  box-shadow: var(--elevation-3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.sketch-box-dashed {
+  border: 2.5px dashed #0a0a0a;
+  border-radius: 12px 28px 18px 32px / 28px 12px 32px 18px;
+  background: var(--surface-muted);
+  box-shadow: var(--elevation-1);
+}
+
+.sketch-box-highlight {
+  border: 3px solid #0a0a0a;
+  border-radius: 18px 32px 14px 28px / 32px 18px 28px 14px;
+  background: var(--surface-card);
+  box-shadow: var(--elevation-4);
+}
+
+/* ── Buttons — raised gray, not pure white ── */
+.sketch-btn {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: var(--surface-raised);
+  color: #0a0a0a;
+  font-family: var(--font-hand), cursive, sans-serif;
+  box-shadow: var(--elevation-2);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.sketch-btn:hover {
+  transform: translate(-2px, -2px);
+  background: var(--surface-card);
+  box-shadow: 4px 4px 0 #0a0a0a, var(--shadow-soft-lg);
+}
+
+.sketch-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #0a0a0a, var(--shadow-soft-sm);
+}
+
+.sketch-btn-filled {
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: var(--elevation-3);
+}
+
+.sketch-btn-filled:hover {
+  background: #1a1a1a;
+  box-shadow: 5px 5px 0 #333, var(--shadow-soft-lg);
+}
+
+/* ── Tags / chips — muted surface ── */
+.sketch-tag {
+  border: 2px solid #0a0a0a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: var(--surface-tag);
+  box-shadow: 1px 1px 0 #0a0a0a, 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.sketch-tag-active {
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 2px 2px 0 #333, 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Inputs ── */
+.sketch-input {
+  border: none;
+  border-bottom: 2.5px solid #0a0a0a;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-hand), cursive, sans-serif;
+}
+
+.sketch-input:focus {
+  outline: none;
+  border-bottom-width: 3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Nav / footer chrome ── */
+.nav-elevated {
+  background: var(--surface-card);
+  box-shadow: var(--elevation-nav);
+}
+
+/* ── Comp icons on calendar ── */
+.comp-icon-btn {
+  border: 2px solid #0a0a0a;
+  border-radius: 50% 45% 50% 45% / 45% 50% 45% 50%;
+  background: var(--surface-card);
+  box-shadow: 2px 2px 0 #0a0a0a, 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+}
+
+.comp-icon-btn:hover {
+  transform: scale(1.18) rotate(-4deg);
+  box-shadow: 3px 3px 0 #0a0a0a, 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+.comp-icon-btn.urgent {
+  animation: sketch-wiggle 2s ease-in-out infinite;
+  box-shadow: 2px 2px 0 #0a0a0a, 0 0 0 3px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes sketch-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg) scale(1.05); }
+  75% { transform: rotate(3deg) scale(1.05); }
+}
+
+/* ── Calendar cells ── */
+.calendar-day {
+  border: 2px solid transparent;
+  border-radius: 8px 14px 10px 12px / 12px 8px 14px 10px;
+  background: var(--surface-raised);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calendar-day:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+  background: var(--surface-card);
+  box-shadow: var(--elevation-1);
+}
+
+.calendar-day.has-deadline {
+  background: var(--surface-card);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15), 0 3px 10px rgba(0, 0, 0, 0.07);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    rgba(0, 0, 0, 0.025) 5px,
+    rgba(0, 0, 0, 0.025) 10px
+  );
+}
+
+.calendar-day.selected {
+  border: 2.5px solid #0a0a0a;
+  background: var(--surface-card);
+  box-shadow: var(--elevation-3);
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.calendar-day.today .day-number {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 50% 45% 50% 45% / 45% 50% 45% 50%;
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ── Tooltip ── */
+.sketch-tooltip {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 12px 20px 14px 18px / 18px 14px 20px 12px;
+  background: var(--surface-card);
+  box-shadow: var(--elevation-4);
+}
+
+/* ── Filter / sidebar panel sits recessed ── */
+.panel-recessed {
+  background: var(--surface-muted);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06), var(--elevation-1);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.85) rotate(-2deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+.timer-active {
+  animation: pulse-ring 2s infinite;
 }

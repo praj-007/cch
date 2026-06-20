@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                  String       @id @default(cuid())
+  email               String       @unique
+  name                String
+  college             String
+  program             String
+  points              Int          @default(0)
+  streak              Int          @default(0)
+  casesCompleted      Int          @default(0)
+  isPracticeCertified Boolean      @default(false)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  badges              UserBadge[]
+  forumPosts          ForumPost[]
+  teamMemberships     TeamMember[]
+  practiceSessions    PracticeSession[]
+  competitionRegs     CompetitionRegistration[]
+}
+
+model Badge {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  name        String
+  description String
+  icon        String
+  users       UserBadge[]
+}
+
+model UserBadge {
+  id       String   @id @default(cuid())
+  userId   String
+  badgeId  String
+  earnedAt DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge    Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+}
+
+model CaseStudy {
+  id                    String            @id @default(cuid())
+  slug                  String            @unique
+  title                 String
+  company               String
+  domain                String
+  difficulty            String
+  duration              Int
+  tags                  String
+  problemStatement      String
+  frameworks            String
+  keyQuestions          String
+  modelSolutionSummary  String
+  hasVideoWalkthrough   Boolean           @default(false)
+  isCaseOfTheWeek       Boolean           @default(false)
+  createdAt             DateTime          @default(now())
+  practiceSessions      PracticeSession[]
+  teams                 Team[]
+}
+
+model Competition {
+  id                    String                    @id @default(cuid())
+  slug                  String                    @unique
+  title                 String
+  organizer             String
+  description           String
+  domain                String
+  format                String
+  registrationDeadline  DateTime
+  eventDate             DateTime
+  preliminaryDate       DateTime?
+  location              String
+  mode                  String
+  teamSizeMin           Int                       @default(2)
+  teamSizeMax           Int                       @default(4)
+  prizePool             String?
+  registrationUrl       String?
+  eligibility           String?
+  status                String                    @default("REGISTRATION_OPEN")
+  isFeatured            Boolean                   @default(false)
+  tags                  String
+  hostCollege           String?
+  createdAt             DateTime                  @default(now())
+  updatedAt             DateTime                  @updatedAt
+  registrations         CompetitionRegistration[]
+}
+
+model CompetitionRegistration {
+  id            String      @id @default(cuid())
+  userId        String
+  competitionId String
+  createdAt     DateTime    @default(now())
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  competition   Competition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, competitionId])
+}
+
+model Team {
+  id         String       @id @default(cuid())
+  name       String
+  college    String
+  maxMembers Int          @default(4)
+  lookingFor String
+  caseId     String?
+  createdAt  DateTime     @default(now())
+  case       CaseStudy?   @relation(fields: [caseId], references: [id], onDelete: SetNull)
+  members    TeamMember[]
+}
+
+model TeamMember {
+  id       String @id @default(cuid())
+  teamId   String?
+  userId   String
+  role     String
+  status   String @default("available")
+  team     Team?  @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, teamId])
+}
+
+model ForumPost {
+  id        String   @id @default(cuid())
+  authorId  String
+  title     String
+  content   String
+  type      String
+  replies   Int      @default(0)
+  upvotes   Int      @default(0)
+  tags      String
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+model PracticeSession {
+  id          String    @id @default(cuid())
+  userId      String
+  caseId      String
+  mode        String
+  arenaType   String
+  solution    String?
+  selfRating  Float?
+  aiScore     Int?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  case        CaseStudy @relation(fields: [caseId], references: [id], onDelete: Cascade)
+}
+
+model LeaderboardSnapshot {
+  id              String   @id @default(cuid())
+  scope           String
+  rank            Int
+  userName        String
+  college         String
+  points          Int
+  casesCompleted  Int
+  streak          Int
+  badges          Int
+  userId          String?
+  updatedAt       DateTime @updatedAt
+}
