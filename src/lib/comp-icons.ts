@@ -5,25 +5,18 @@ export interface CompIcon {
 }
 
 const iconMap: Record<string, CompIcon> = {
-  "hul-lime-2026": { emoji: "🧴", short: "HUL", label: "Hindustan Unilever" },
-  "flipkart-wired-2026": { emoji: "🛒", short: "FK", label: "Flipkart" },
-  "amazon-ace-2026": { emoji: "📦", short: "AMZ", label: "Amazon" },
-  "mahindra-war-room-2026": { emoji: "🚜", short: "M&M", label: "Mahindra" },
-  "tata-crucible-2026": { emoji: "🏭", short: "Tata", label: "Tata Group" },
-  "reckitt-kickstart-2026": { emoji: "🧼", short: "RB", label: "Reckitt" },
-  "asian-pact-2026": { emoji: "🎨", short: "AP", label: "Asian Paints" },
-  "itc-interrobang-2026": { emoji: "🚬", short: "ITC", label: "ITC Limited" },
-  "mondelez-canvas-2026": { emoji: "🍫", short: "MDLZ", label: "Mondelez" },
-  "deloitte-ace-of-case-2026": { emoji: "📊", short: "Del", label: "Deloitte" },
-  "zs-case-challenge-2026": { emoji: "💊", short: "ZS", label: "ZS Associates" },
-  "vista-iimb-2026": { emoji: "🎓", short: "IIMB", label: "IIM Bangalore" },
-  "confluence-iima-2026": { emoji: "🏛️", short: "IIMA", label: "IIM Ahmedabad" },
-  "fms-fiesta-conquest-2026": { emoji: "⚔️", short: "FMS", label: "FMS Delhi" },
-  "mdi-imperium-2026": { emoji: "🏫", short: "MDI", label: "MDI Gurgaon" },
-  "iift-quo-vadis-2026": { emoji: "🌏", short: "IIFT", label: "IIFT Delhi" },
-  "colgate-transcend-2026": { emoji: "🦷", short: "Col", label: "Colgate" },
-  "pg-ceo-challenge-2026": { emoji: "🧴", short: "P&G", label: "Procter & Gamble" },
-  "nivea-marathon-2026": { emoji: "✨", short: "NIV", label: "NIVEA" },
+  "hul-lime-2025": { emoji: "🧴", short: "HUL", label: "Hindustan Unilever" },
+  "hul-techtonic-2025": { emoji: "💡", short: "HUL", label: "HUL TechTonic" },
+  "amazon-ace-2025": { emoji: "📦", short: "AMZ", label: "Amazon" },
+  "asian-paints-canvas-2025": { emoji: "🎨", short: "AP", label: "Asian Paints" },
+  "tata-imagination-challenge-2025": { emoji: "🏭", short: "Tata", label: "Tata Group" },
+  "abg-stratos-2025": { emoji: "🏢", short: "ABG", label: "Aditya Birla Group" },
+  "marico-over-the-wall-2025": { emoji: "🥥", short: "Mar", label: "Marico" },
+  "tvs-epic-2025": { emoji: "💳", short: "TVS", label: "TVS Credit" },
+  "britannia-creatovate-2025": { emoji: "🍪", short: "Brit", label: "Britannia" },
+  "fms-conquest-2026": { emoji: "⚔️", short: "FMS", label: "FMS Delhi" },
+  "fame-open-innovation-2025": { emoji: "🚀", short: "FAME", label: "FAME 5.0" },
+  "tvs-motor-ride-2025": { emoji: "🏍️", short: "TVS", label: "TVS Motor" },
 };
 
 export function getCompIcon(slug: string, organizer: string): CompIcon {

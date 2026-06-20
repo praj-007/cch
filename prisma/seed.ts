@@ -1,10 +1,7 @@
 import "dotenv/config";
 import { prisma } from "../src/lib/prisma";
 import { cases, forumPosts } from "../src/lib/data";
-import { competitionsSeed } from "./competitions-seed";
-
-const competitions = competitionsSeed;
-
+import { buildCompetitionsForSeed } from "./build-competitions";
 
 const users = [
   {
@@ -160,6 +157,8 @@ function slugify(title: string, id: string): string {
 
 async function main() {
   console.log("Seeding database...");
+  console.log("Syncing competition dates from Unstop...");
+  const competitions = await buildCompetitionsForSeed();
 
   await prisma.competitionRegistration.deleteMany();
   await prisma.practiceSession.deleteMany();
@@ -237,6 +236,7 @@ async function main() {
       },
     });
   }
+  console.log(`Synced ${competitions.length} competitions from Unstop`);
 
   const forumAuthorMap: Record<string, string> = {
     "Sneha Kapoor": userRecords["sneha.reddy@xlri.ac.in"],
@@ -358,9 +358,11 @@ async function main() {
     });
   }
 
-  const lime = await prisma.competition.findUnique({ where: { slug: "hul-lime-2026" } });
+  const lime = await prisma.competition.findUnique({
+    where: { slug: "hul-lime-2025" },
+  });
   const fms = await prisma.competition.findUnique({
-    where: { slug: "fms-fiesta-conquest-2026" },
+    where: { slug: "fms-conquest-2026" },
   });
   if (lime) {
     await prisma.competitionRegistration.create({
