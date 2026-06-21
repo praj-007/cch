@@ -4,6 +4,14 @@ import { prisma } from "../src/lib/prisma";
 
 async function main() {
   const competitions = await buildCompetitionsFromUnstop();
+  const activeUnstopIds = competitions.map((comp) => comp.unstopId);
+
+  const removed = await prisma.competition.deleteMany({
+    where: { unstopId: { notIn: activeUnstopIds } },
+  });
+  if (removed.count > 0) {
+    console.log(`Removed ${removed.count} stale competitions`);
+  }
 
   for (const comp of competitions) {
     const { tags, ...rest } = comp;

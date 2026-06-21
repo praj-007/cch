@@ -5,18 +5,23 @@ export interface CompIcon {
 }
 
 const iconMap: Record<string, CompIcon> = {
-  "hul-lime-2025": { emoji: "🧴", short: "HUL", label: "Hindustan Unilever" },
-  "hul-techtonic-2025": { emoji: "💡", short: "HUL", label: "HUL TechTonic" },
-  "amazon-ace-2025": { emoji: "📦", short: "AMZ", label: "Amazon" },
-  "asian-paints-canvas-2025": { emoji: "🎨", short: "AP", label: "Asian Paints" },
-  "tata-imagination-challenge-2025": { emoji: "🏭", short: "Tata", label: "Tata Group" },
-  "abg-stratos-2025": { emoji: "🏢", short: "ABG", label: "Aditya Birla Group" },
-  "marico-over-the-wall-2025": { emoji: "🥥", short: "Mar", label: "Marico" },
-  "tvs-epic-2025": { emoji: "💳", short: "TVS", label: "TVS Credit" },
-  "britannia-creatovate-2025": { emoji: "🍪", short: "Brit", label: "Britannia" },
-  "fms-conquest-2026": { emoji: "⚔️", short: "FMS", label: "FMS Delhi" },
-  "fame-open-innovation-2025": { emoji: "🚀", short: "FAME", label: "FAME 5.0" },
-  "tvs-motor-ride-2025": { emoji: "🏍️", short: "TVS", label: "TVS Motor" },
+  "asian-paints-canvas-2026": { emoji: "🎨", short: "AP", label: "Asian Paints" },
+  "coca-cola-mantra-2026": { emoji: "🥤", short: "CC", label: "Coca-Cola" },
+  "marico-level-up-2026": { emoji: "🥥", short: "Mar", label: "Marico" },
+  "amex-campus-challenge-strategy-2026": { emoji: "💳", short: "Amex", label: "American Express" },
+  "amex-campus-challenge-product-2026": { emoji: "💳", short: "Amex", label: "Amex Product" },
+  "shri-ram-consulting-olympiad-2026": { emoji: "📊", short: "SRC", label: "SRCC Consulting" },
+  "the-consultants-2026": { emoji: "🧠", short: "TC", label: "The Consultants" },
+  "marketer-of-the-year-2026": { emoji: "📣", short: "MOY", label: "Marketer of the Year" },
+  "prodman-of-the-year-2026": { emoji: "📱", short: "PMY", label: "ProdMan of the Year" },
+  "global-quant-finance-challenge-2026": { emoji: "📈", short: "GQF", label: "Quant Finance" },
+  "business-leadership-simulator-2026": { emoji: "🎯", short: "BLS", label: "Business Leadership" },
+  "conquest-26": { emoji: "🚀", short: "CQ", label: "Conquest BITS" },
+  "nextgen-marketing-challenge-2026": { emoji: "✨", short: "NGM", label: "NextGen Marketing" },
+  "sundaram-pitch-fest-tech-2026": { emoji: "⚙️", short: "SPF", label: "Sundaram Pitch Fest" },
+  "interactup-case-competition-2026": { emoji: "🤝", short: "IU", label: "InteractUp" },
+  "hackon-amazon-6-2026": { emoji: "📦", short: "AMZ", label: "Amazon HackOn" },
+  "et-ai-hackathon-2-2026": { emoji: "🤖", short: "ET", label: "ET AI Hackathon" },
 };
 
 export function getCompIcon(slug: string, organizer: string): CompIcon {
