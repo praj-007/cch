@@ -8,6 +8,7 @@ const iconMap: Record<string, CompIcon> = {
   "asian-paints-canvas-2026": { emoji: "🎨", short: "AP", label: "Asian Paints" },
   "coca-cola-mantra-2026": { emoji: "🥤", short: "CC", label: "Coca-Cola" },
   "marico-level-up-2026": { emoji: "🥥", short: "Mar", label: "Marico" },
+  "tvs-credit-epic-8-2026": { emoji: "💳", short: "TVS", label: "TVS Credit EPIC" },
   "amex-campus-challenge-strategy-2026": { emoji: "💳", short: "Amex", label: "American Express" },
   "amex-campus-challenge-product-2026": { emoji: "💳", short: "Amex", label: "Amex Product" },
   "shri-ram-consulting-olympiad-2026": { emoji: "📊", short: "SRC", label: "SRCC Consulting" },
